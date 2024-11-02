@@ -48,7 +48,9 @@ The JSON file should follow this structure:
 }
 ```
 
-## License
+## Generating JSON Quizzes with ChatGPT
+
+You can automatically generate JSON quiz files using a Custom ChatGPT Bot. This bot can help you create multiple-choice quizzes in the required JSON format. Access the bot here: [ChatGPT Custom GPT](https://chatgpt.com/g/g-5ZAIVfT89-json-multiple-choice-quiz)
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
