@@ -2,6 +2,10 @@
 
 Flexible Quiz is a Vue.js application designed to generate interactive HTML quizzes from JSON files. This application allows users to upload a JSON file containing quiz questions and answers, which are then rendered into a user-friendly quiz interface.
 
+## Sample Quiz
+
+![Sample Quiz](sample_quiz.png)
+
 ## Features
 
 - **Dynamic Quiz Generation**: Load quizzes dynamically from JSON files.
@@ -47,6 +51,10 @@ The JSON file should follow this structure:
     ]
 }
 ```
+
+## Example of Final Report
+
+![Final Report](final_report.png)
 
 ## Generating JSON Quizzes with ChatGPT
 
