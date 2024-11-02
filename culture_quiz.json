@@ -1,0 +1,306 @@
+{
+    "title": "Culture Quiz Based on Terry Eagleton's Book",
+    "questions": [
+        {
+            "id": 1,
+            "text": "According to Eagleton, which of the following is NOT a major sense of the word 'culture'?",
+            "choices": [
+                "A body of artistic and intellectual work",
+                "A process of spiritual and intellectual development",
+                "A shared set of political beliefs",
+                "A whole way of life"
+            ],
+            "answers": {
+                "correct": {
+                    "index": 2,
+                    "comment": "A shared set of political beliefs is not listed by Eagleton as one of the four major senses of the word. He focuses on culture as relating to art and intellect, personal development, shared customs and beliefs, and an overall way of life."
+                },
+                "wrong": [
+                    {
+                        "index": 0,
+                        "comment": "A body of artistic and intellectual work is explicitly listed as one of the four major senses of the word 'culture'."
+                    },
+                    {
+                        "index": 1,
+                        "comment": "A process of spiritual and intellectual development is explicitly listed as one of the four major senses of the word 'culture'."
+                    },
+                    {
+                        "index": 3,
+                        "comment": "A whole way of life is explicitly listed as one of the four major senses of the word 'culture'."
+                    }
+                ]
+            }
+        },
+        {
+            "id": 2,
+            "text": "Which of the following examples does Eagleton use to illustrate the difference between 'culture' as art and 'culture' as a way of life?",
+            "choices": [
+                "The difference between Lappish poetry and Lappish cuisine",
+                "The contrast between Renault culture and Volkswagen culture",
+                "The distinction between the culture of the British working-class movement and the culture of the English gentry",
+                "The difference between traffic lights and the color you paint mailboxes"
+            ],
+            "answers": {
+                "correct": {
+                    "index": 2,
+                    "comment": "Eagleton uses the distinction between the British working-class movement's culture (defined more by political institutions) and the English gentry's culture (more associated with art and intellectual pursuits) to highlight different aspects of culture."
+                },
+                "wrong": [
+                    {
+                        "index": 0,
+                        "comment": "While these represent different aspects of culture, Eagleton uses them to illustrate broader definitions of culture, not the specific distinction between art and way of life."
+                    },
+                    {
+                        "index": 1,
+                        "comment": "This refers to organizational cultures within companies, which is not the focus of Eagleton's discussion."
+                    },
+                    {
+                        "index": 3,
+                        "comment": "Eagleton uses this to illustrate the difference between 'civilization' (functional necessities) and 'culture' (stylistic choices), not the art vs. way of life distinction."
+                    }
+                ]
+            }
+        },
+        {
+            "id": 3,
+            "text": "Why does Eagleton suggest that the anthropological sense of 'culture' (a whole way of life) might be problematic?",
+            "choices": [
+                "It is too focused on art and intellectual work",
+                "It is too narrow and specific in its scope",
+                "It risks becoming too broad and encompassing too much",
+                "It fails to account for the role of individual agency in shaping culture"
+            ],
+            "answers": {
+                "correct": {
+                    "index": 2,
+                    "comment": "Eagleton argues that defining culture as 'a whole way of life' can lead to a definition that is too amorphous and inclusive, making it almost indistinguishable from 'our whole common life'."
+                },
+                "wrong": [
+                    {
+                        "index": 0,
+                        "comment": "This describes the aesthetic sense of 'culture', not the anthropological one."
+                    },
+                    {
+                        "index": 1,
+                        "comment": "The anthropological sense of 'culture' is actually criticized for being too broad, not too narrow."
+                    },
+                    {
+                        "index": 3,
+                        "comment": "While individual agency is important, this isn't Eagleton's primary concern when discussing the problems with the anthropological definition."
+                    }
+                ]
+            }
+        },
+        {
+            "id": 4,
+            "text": "According to Eagleton, why might the concept of 'culture' as a whole way of life be more applicable to tribal or pre-modern societies?",
+            "choices": [
+                "Because pre-modern societies are inherently more artistic and intellectual",
+                "Because pre-modern societies are more homogeneous and lack internal conflict",
+                "Because in pre-modern societies, symbolic practices are more closely intertwined with social and economic activities",
+                "Because pre-modern societies are more advanced and have a greater need for cultural expression"
+            ],
+            "answers": {
+                "correct": {
+                    "index": 2,
+                    "comment": "Eagleton explains that in pre-modern societies, cultural practices are more integrated with daily life, making it difficult to separate cultural practices from social and economic activities."
+                },
+                "wrong": [
+                    {
+                        "index": 0,
+                        "comment": "This is a romanticized view of pre-modern societies that Eagleton doesn't support."
+                    },
+                    {
+                        "index": 1,
+                        "comment": "Eagleton states that no society is free from conflict, regardless of its historical period."
+                    },
+                    {
+                        "index": 3,
+                        "comment": "This contradicts the general understanding that pre-modern societies were less technologically advanced."
+                    }
+                ]
+            }
+        },
+        {
+            "id": 5,
+            "text": "What historical development does Eagleton identify as a key factor in the emergence of the concept of 'culture' as distinct from 'civilization'?",
+            "choices": [
+                "The Renaissance",
+                "The Enlightenment",
+                "The Industrial Revolution",
+                "The French Revolution"
+            ],
+            "answers": {
+                "correct": {
+                    "index": 2,
+                    "comment": "Eagleton identifies the Industrial Revolution as the catalyst for the culture/civilization divide, arguing that industrial society's emphasis on material production led to a romanticized notion of 'culture' as separate from 'civilization'."
+                },
+                "wrong": [
+                    {
+                        "index": 0,
+                        "comment": "While the Renaissance was significant, Eagleton specifically points to the Industrial Revolution as the key development."
+                    },
+                    {
+                        "index": 1,
+                        "comment": "While the Enlightenment brought important changes, it's not identified as the key factor in this distinction."
+                    },
+                    {
+                        "index": 3,
+                        "comment": "While the French Revolution was important for social change, it's not identified as the key factor in the culture/civilization divide."
+                    }
+                ]
+            }
+        }
+,
+        {
+            "id": 6,
+            "text": "How does Eagleton characterize the relationship between 'culture' and 'barbarism'?",
+            "choices": [
+                "Culture and barbarism are essentially synonymous concepts",
+                "Culture represents refinement and progress, while barbarism signifies savagery and primitiveness",
+                "Culture is a form of barbarism disguised as sophistication",
+                "Culture can be seen as a response to or critique of barbarism"
+            ],
+            "answers": {
+                "correct": {
+                    "index": 3,
+                    "comment": "Eagleton positions 'culture', particularly in its artistic and moral sense, as a response to and critique of 'barbarism', suggesting it as a means of elevating humanity above its baser instincts."
+                },
+                "wrong": [
+                    {
+                        "index": 0,
+                        "comment": "Eagleton presents culture and barbarism as contrasting concepts, not synonymous ones."
+                    },
+                    {
+                        "index": 1,
+                        "comment": "While this is a common understanding, Eagleton's discussion suggests a more complex relationship between the two concepts."
+                    },
+                    {
+                        "index": 2,
+                        "comment": "This view aligns more with critics of culture, not Eagleton's position in the text."
+                    }
+                ]
+            }
+        },
+        {
+            "id": 7,
+            "text": "Which of the following thinkers does Eagleton cite as someone who believed that 'civilization' was essentially barbaric?",
+            "choices": [
+                "T.S. Eliot",
+                "John Stuart Mill",
+                "Edward Burnett Tylor",
+                "D.H. Lawrence"
+            ],
+            "answers": {
+                "correct": {
+                    "index": 3,
+                    "comment": "Eagleton cites D.H. Lawrence, who described industrial England as devoid of natural beauty and gladness, suggesting that civilization can be a form of barbarism that destroys natural beauty and diminishes human life quality."
+                },
+                "wrong": [
+                    {
+                        "index": 0,
+                        "comment": "While Eliot had complex views on culture and civilization, he isn't presented as someone who explicitly equates civilization with barbarism."
+                    },
+                    {
+                        "index": 1,
+                        "comment": "Mill acknowledges negative aspects of civilization but doesn't go so far as to call it barbaric."
+                    },
+                    {
+                        "index": 2,
+                        "comment": "Tylor's definition of civilization focuses on its complex whole of acquired capabilities, without the negative connotation of barbarism."
+                    }
+                ]
+            }
+        },
+        {
+            "id": 8,
+            "text": "Which of the following BEST describes Eagleton's view on the relationship between 'culture' and 'value'?",
+            "choices": [
+                "Culture is always inherently valuable",
+                "Culture is always a matter of subjective preference",
+                "Culture can be both descriptive and evaluative",
+                "Culture has no inherent value and only gains meaning through social context"
+            ],
+            "answers": {
+                "correct": {
+                    "index": 2,
+                    "comment": "Eagleton emphasizes that 'culture' can be used both neutrally to describe ways of life and judgmentally to evaluate them, as shown in his example of how the term can be used differently when discussing Nazi culture."
+                },
+                "wrong": [
+                    {
+                        "index": 0,
+                        "comment": "Eagleton acknowledges that there can be 'bad art' and 'shoddy thinking', implying that not all cultural products are automatically valuable."
+                    },
+                    {
+                        "index": 1,
+                        "comment": "While personal taste plays a role, Eagleton recognizes that cultural value judgments can be informed by shared standards."
+                    },
+                    {
+                        "index": 3,
+                        "comment": "While social context is important, Eagleton suggests that some aspects of culture might hold intrinsic value."
+                    }
+                ]
+            }
+        },
+        {
+            "id": 9,
+            "text": "According to Eagleton, what is the key difference between 'praxis' and actions that have an external goal?",
+            "choices": [
+                "Praxis is always collective, while actions with external goals are individual",
+                "Praxis is focused on material production, while actions with external goals are concerned with spiritual development",
+                "Praxis is driven by external motivations, while actions with external goals are intrinsically motivated",
+                "Praxis has its ends internal to the activity itself, while actions with external goals aim at something beyond the activity"
+            ],
+            "answers": {
+                "correct": {
+                    "index": 3,
+                    "comment": "Eagleton distinguishes between activities that are valuable in themselves (praxis) and those done for external purposes, using the example of playing clarinet for enjoyment versus knitting a balaclava to rob a bank."
+                },
+                "wrong": [
+                    {
+                        "index": 0,
+                        "comment": "Praxis can be individual, as shown in the example of playing the clarinet."
+                    },
+                    {
+                        "index": 1,
+                        "comment": "Praxis can be spiritual or intellectual, as demonstrated by the clarinet example."
+                    },
+                    {
+                        "index": 2,
+                        "comment": "This is the opposite of Eagleton's point - praxis is intrinsically motivated, while actions with external goals are driven by external motivations."
+                    }
+                ]
+            }
+        },
+        {
+            "id": 10,
+            "text": "Eagleton uses the example of people in New Orleans referring to the streetcar named Clio as 'C.L.10' to illustrate what point about culture?",
+            "choices": [
+                "The decline of classical education in modern society",
+                "The tendency of culture to become commercialized",
+                "The distinction between the functional and the decorative",
+                "The importance of historical awareness in cultural understanding"
+            ],
+            "answers": {
+                "correct": {
+                    "index": 2,
+                    "comment": "Eagleton uses this anecdote to highlight how culture often involves going beyond the purely practical to embrace elements that are aesthetically pleasing or symbolically meaningful."
+                },
+                "wrong": [
+                    {
+                        "index": 0,
+                        "comment": "While the anecdote might tangentially relate to education, Eagleton's primary point is about the nature of culture."
+                    },
+                    {
+                        "index": 1,
+                        "comment": "The anecdote doesn't directly relate to commercialization."
+                    },
+                    {
+                        "index": 3,
+                        "comment": "While historical context matters, the anecdote primarily focuses on the functional vs. decorative aspect of culture."
+                    }
+                ]
+            }
+        }
+    ]
+}

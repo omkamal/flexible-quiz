@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Quiz Application</title>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f0f8ff;
+        }
+
+        .quiz-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+        }
+
+        .file-input-section {
+            text-align: center;
+            padding: 30px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .file-input-container {
+            margin: 20px 0;
+            position: relative;
+            display: inline-block;
+        }
+
+        .file-input {
+            position: absolute;
+            left: -9999px;
+            opacity: 0;
+        }
+
+        .file-input-label {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #76c7c0;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 1.1em;
+        }
+
+        .file-input-label:hover {
+            background-color: #5fb5ae;
+        }
+
+        .file-input-help {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+
+        .loading-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #76c7c0;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background-color: #76c7c0;
+            transition: width 0.3s ease;
+        }
+
+        button,
+        .choice-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            text-align: left;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            background-color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover:not([disabled]),
+        .choice-button:hover:not([disabled]) {
+            background-color: #f5f5f5;
+        }
+
+        button[disabled],
+        .choice-button[disabled] {
+            cursor: not-allowed;
+        }
+
+        .choice-button.correct {
+            background-color: #c8e6c9;
+            border-color: #4caf50;
+        }
+
+        .choice-button.wrong {
+            background-color: #ffcdd2;
+            border-color: #f44336;
+        }
+
+        .feedback {
+            margin: 15px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .feedback.correct {
+            color: #2e7d32;
+            background-color: #c8e6c9;
+        }
+
+        .feedback.wrong {
+            color: #c62828;
+            background-color: #ffcdd2;
+        }
+
+        .results {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .stats {
+            margin: 20px 0;
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .restart-button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        .restart-button:hover {
+            background-color: #45a049;
+        }
+
+        .time-info {
+            margin: 10px 0;
+            color: #666;
+            font-size: 0.9em;
+            background-color: #f8f9fa;
+            padding: 8px;
+            border-radius: 4px;
+        }
+
+        .incorrect-review {
+            text-align: left;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #fff3e0;
+            border-radius: 8px;
+        }
+
+        .incorrect-review h3 {
+            color: #e65100;
+            margin-bottom: 15px;
+        }
+
+        .incorrect-review h4 {
+            color: #333;
+            margin: 10px 0;
+        }
+
+        .incorrect-review hr {
+            border: none;
+            border-top: 1px solid #ffe0b2;
+            margin: 15px 0;
+        }
+
+        #chartContainer {
+            margin-top: 30px;
+            width: 100%;
+            height: 400px;
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3, h4 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2em;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            margin: 1rem 0;
+        }
+
+        p {
+            margin: 0.5rem 0;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="app">
+        <div class="quiz-container">
+            <h1>{{ quizTitle || 'Math Quiz' }}</h1>
+
+            <div v-if="!quizLoaded && !quizStarted" class="file-input-section">
+                <h2>Upload Quiz JSON File</h2>
+                <div class="file-input-container">
+                    <input type="file" accept="application/json" @change="loadQuiz" class="file-input" id="quizFile">
+                    <label for="quizFile" class="file-input-label">Choose Quiz File</label>
+                </div>
+                <p class="file-input-help">Please select a JSON file containing the quiz questions</p>
+            </div>
+
+            <div v-if="loading" class="loading-container">
+                <div class="loading-spinner"></div>
+                <p>Loading quiz data...</p>
+            </div>
+
+            <div v-else-if="quizLoaded">
+                <div v-if="!quizStarted && !quizCompleted" class="start-section">
+                    <button class="start-button" @click="startQuiz">Start Quiz</button>
+                </div>
+
+                <div v-if="quizStarted && !quizCompleted">
+                    <div class="progress-bar">
+                        <div class="progress" :style="{ width: `${(currentQuestionIndex + 1) / questions.length * 100}%` }"></div>
+                    </div>
+
+                    <h2 v-mathjax v-html="currentQuestion.text"></h2>
+
+                    <div class="time-info">Time spent on this question: {{ questionTime }} seconds</div>
+
+                    <div v-for="(choice, index) in currentQuestion.choices" :key="index">
+                        <button class="choice-button"
+                                @click="handleAnswer(index)"
+                                v-mathjax
+                                v-html="choice"
+                                :disabled="showFeedback">
+                        </button>
+                    </div>
+
+                    <div v-if="showFeedback" :class="['feedback', isCorrect ? 'correct' : 'wrong']">
+                        <span v-mathjax v-html="feedbackMessage"></span>
+                    </div>
+                </div>
+
+                <div class="results" v-if="quizCompleted">
+                    <h2>Quiz Completed!</h2>
+                    <div id="chartContainer" v-if="correctAnswers > 0 || wrongAnswers > 0"> <canvas id="timeChart"></canvas> </div>
+
+                    <div class="stats">
+                        <p>Overall Score: {{ (correctAnswers / questions.length * 100).toFixed(2) }}%</p>
+                        <p>Total Time: {{ totalTime }} seconds</p>
+                        <p>Average Time per Question: {{ (totalTime / questions.length).toFixed(2) }} seconds</p>
+                    </div>
+
+                    <div class="incorrect-review" v-if="incorrectAnswers.length">
+                        <h3>Incorrect Answers Review:</h3>
+                        <div v-for="(item, index) in incorrectAnswers" :key="index">
+                            <h4 v-mathjax>Question: <span v-html="item.question"></span></h4>
+                            <p v-mathjax>Your Answer: <span v-html="item.selected"></span></p>
+                            <p v-mathjax>Correct Answer Explanation: <span v-html="getCorrectAnswerComment(item.question)"></span></p>
+                            <hr>
+                        </div>
+                    </div>
+
+                    <button class="restart-button" @click="restartQuiz">Restart Quiz</button>
+                    <button class="restart-button" @click="reloadQuiz">Load New Quiz</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+    const { createApp } = Vue
+
+    const app = createApp({
+        data() {
+            return {
+                loading: false,
+                quizLoaded: false,
+                quizTitle: '',
+                questions: [],
+                quizStarted: false,
+                quizCompleted: false,
+                currentQuestionIndex: 0,
+                questionTime: 0,
+                totalTime: 0,
+                correctAnswers: 0,
+                wrongAnswers: 0,
+                incorrectAnswers: [],
+                showFeedback: false,
+                feedbackMessage: '',
+                isCorrect: false,
+                timer: null,
+                questionStartTime: null,
+                answerTimes: []
+            }
+        },
+        computed: {
+            currentQuestion() {
+                if (this.questions && this.questions.length > this.currentQuestionIndex) {
+                    return this.questions[this.currentQuestionIndex]
+                } else {
+                    return null
+                }
+            }
+        },
+        methods: {
+            loadQuiz(event) {
+                const file = event.target.files[0]
+                if (!file) return
+
+                this.loading = true
+                const reader = new FileReader()
+
+                reader.onload = (e) => {
+                    try {
+                        const data = JSON.parse(e.target.result)
+                        this.quizTitle = data.title
+                        this.questions = data.questions
+                        this.quizLoaded = true
+                        this.renderMathJax()
+
+                    } catch (error) {
+                        console.error('Error parsing quiz JSON:', error)
+                        alert('Error loading quiz file. Please make sure it\'s a valid JSON file.')
+                    } finally {
+                        this.loading = false
+                    }
+                }
+
+                reader.onerror = () => {
+                    this.loading = false
+                    alert('Error reading file')
+                }
+
+                reader.readAsText(file)
+            },
+            startQuiz() {
+                this.quizStarted = true
+                this.questionStartTime = Date.now()
+                this.currentQuestionIndex = 0
+                this.correctAnswers = 0
+                this.wrongAnswers = 0
+                this.incorrectAnswers = []
+                this.quizCompleted = false
+                this.totalTime = 0
+                this.answerTimes = []
+                this.startTimer()
+            },
+            startTimer() {
+                this.timer = setInterval(() => {
+                    this.questionTime++;
+                }, 1000);
+            },
+            stopTimer() {
+                clearInterval(this.timer)
+            },
+            getCorrectAnswerComment(questionText) {
+                const question = this.questions.find(q => q.text === questionText)
+                return question ? question.answers.correct.comment : ''
+            },
+
+            handleAnswer(choiceIndex) {
+                this.stopTimer();
+
+                const currentQuestion = this.currentQuestion;
+
+                if (currentQuestion != null) {
+                    const endTime = Date.now();
+                    const timeSpent = (endTime - this.questionStartTime) / 1000;
+
+                    this.answerTimes.push(timeSpent);
+                    this.totalTime += timeSpent;
+
+                    const isCorrect = currentQuestion.answers.correct.index === choiceIndex;
+                    this.isCorrect = isCorrect;
+
+                    if (isCorrect) {
+                        this.correctAnswers++;
+                    } else {
+                        this.wrongAnswers++;
+                        this.incorrectAnswers = [
+                            ...this.incorrectAnswers, // Use spread operator to create new array for reactivity
+                            {
+                                question: currentQuestion.text,
+                                selected: currentQuestion.choices[choiceIndex],
+                                comment: this.getCorrectAnswerComment(currentQuestion.text)
+                            }
+                        ];
+                    }
+
+                    this.showFeedback = true;
+                    this.feedbackMessage = isCorrect ? "Correct!" : "Wrong.";
+
+                    setTimeout(() => {
+                        this.showFeedback = false;
+
+                        if (this.currentQuestionIndex < this.questions.length - 1) {
+                            this.currentQuestionIndex++;
+                            this.questionTime = 0; // Reset questionTime *before* starting the timer for the next question
+                            this.startTimer(); // Start timer for the next question
+                        } else {
+                            this.quizCompleted = true;
+                            this.renderChart();
+                        }
+                    }, 2000);
+                }
+            },
+
+            renderChart() {
+                if (((this.correctAnswers > 0 || this.wrongAnswers > 0) && this.quizCompleted && this.questions.length > 0) || this.incorrectAnswers.length > 0) {
+                    this.$nextTick(() => {
+                        const ctx = document.getElementById('timeChart').getContext('2d');
+                        if (ctx) {
+                            const chartData = [this.correctAnswers, this.wrongAnswers];
+                            const chartLabels = ['Correct', 'Incorrect'];
+
+                            new Chart(ctx, {
+                                type: 'pie',
+                                data: {
+                                    labels: chartLabels,
+                                    datasets: [{
+                                        data: chartData,
+                                        backgroundColor: ['rgba(118, 199, 192, 0.5)', 'rgba(255, 99, 132, 0.5)'],
+                                        borderColor: ['rgba(118, 199, 192, 1)', 'rgba(255, 99, 132, 1)'],
+                                        borderWidth: 1
+                                    }]
+                                },
+                                options: {
+                                    responsive: true,
+                                    plugins: {
+                                        title: {
+                                            display: true,
+                                            text: 'Correct vs. Incorrect Answers',
+                                            font: { size: 16 }
+                                        },
+                                        tooltip: {
+                                            callbacks: {
+                                                label: (context) => {
+                                                    let label = context.label || '';
+                                                    if (label) {
+                                                        label += ': ';
+                                                    }
+                                                    label += context.parsed + ' answers';
+                                                    return label;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+                        } else {
+                            console.error("Could not get 2d context for chart canvas.");
+                        }
+                    });
+                }
+            },
+
+            restartQuiz() {
+                this.quizStarted = false
+                this.quizCompleted = false
+                this.currentQuestionIndex = 0
+                this.questionTime = 0
+                this.totalTime = 0
+                this.correctAnswers = 0
+                this.wrongAnswers = 0
+                this.incorrectAnswers = []
+                this.showFeedback = false
+                this.answerTimes = []
+                this.startQuiz()
+            },
+            reloadQuiz() {
+                this.quizLoaded = false
+                this.quizStarted = false
+                this.quizCompleted = false
+                this.quizTitle = ''
+                this.questions = []
+                this.currentQuestionIndex = 0
+                this.questionTime = 0
+                this.totalTime = 0
+                this.correctAnswers = 0
+                this.wrongAnswers = 0
+                this.incorrectAnswers = []
+                this.showFeedback = false
+                this.feedbackMessage = ''
+                this.isCorrect = false
+                this.timer = null
+                this.questionStartTime = null
+                this.answerTimes = []
+
+                // Clear file input:
+                document.getElementById('quizFile').value = ''
+
+                this.$nextTick(() => {
+                    MathJax.typesetPromise()
+                        .catch((err) => console.log('Typesetting failed: ' + err.message))
+                })
+            }, // *** Correct placement of closing curly brace ***
+            renderMathJax() {
+                this.$nextTick(() => {
+                    MathJax.typesetPromise()
+                        .then(() => {
+                           //fallback mechanism if mathjax fails to render the equations
+                        })
+                        .catch((err) => {
+                            console.error('MathJax Typesetting failed:', err.message)
+                            const elements = document.querySelectorAll('[v-mathjax]')
+                            for (const el of elements) {
+                                el.textContent = el.textContent
+                            }
+                        })
+                })
+            },
+        },
+        directives: { //Custom directive
+                mathjax: {
+                    mounted(el) {
+                        MathJax.typesetPromise([el])
+                            .catch((err) => console.error('MathJax Typesetting failed:', err.message));
+                    },
+                    updated(el) {
+                        MathJax.typesetPromise([el])
+                            .catch((err) => console.error('MathJax Typesetting failed:', err.message));
+
+                    }
+                }
+        },
+        mounted() {
+            // Initial typesetting is now handled by the watcher on quizLoaded
+        },
+        watch: {
+            currentQuestionIndex(newIndex) {
+                this.$nextTick(() => {
+                    this.questionTime = 0; // Resetting the timer here to ensure the correct value is shown.
+                    this.questionStartTime = Date.now();
+                    this.renderMathJax()
+                });
+            },
+            quizLoaded(newValue) {
+                if (newValue) {
+                    this.renderMathJax();
+                }
+            },
+            incorrectAnswers: {
+                handler(newIncorrectAnswers) {
+                    if (this.quizCompleted && newIncorrectAnswers.length > 0) {
+                        this.$nextTick(() => {
+                            this.renderMathJax();
+                        });
+                    }
+                },
+                deep: true
+            },
+            questionTime(newQuestionTime){ //Fixed: Force update time each second
+                this.$nextTick(() => {
+                    this.renderMathJax();
+                });
+
+            }
+
+        } // watch section ends here
+    }) // Vue app definition ends here
+
+    app.mount('#app')
+</script>
+</body>
+</html>

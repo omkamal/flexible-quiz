@@ -1,0 +1,70 @@
+{
+    "title": "Sample Math Quiz",
+    "questions": [
+      {
+        "id": 1,
+        "text": "Solve for x: $2x + 5 = 11$",
+        "choices": ["$x = 3$", "$x = 8$", "$x = -3$", "$x = 6$"],
+        "answers": {
+          "correct": {"index": 0, "comment": "Correct! $2x = 11 - 5$, so $2x = 6$, and $x = 3$"},
+          "wrong": [
+            {"index": 1, "comment": "Incorrect.  Try subtracting 5 from both sides first."},
+            {"index": 2, "comment": "Incorrect. Be careful with the signs when subtracting."},
+            {"index": 3, "comment": "Incorrect. Check your division after subtracting 5 from both sides."}
+          ]
+        }
+      },
+      {
+        "id": 2,
+        "text": "What is the area of a rectangle with length 8cm and width 5cm?",
+        "choices": ["$40cm^2$", "$26cm^2$", "$13cm^2$", "$40cm$"],
+        "answers": {
+          "correct": {"index": 0, "comment": "Correct! Area = length x width = $8cm \\times 5cm = 40cm^2$"},
+          "wrong": [
+            {"index": 1, "comment": "Incorrect.  Area is length multiplied by width, not added."},
+            {"index": 2, "comment": "Incorrect.  Area is length multiplied by width."},
+            {"index": 3, "comment": "Incorrect.  The units for area are squared ($cm^2$)."}
+          ]
+        }
+      },
+      {
+        "id": 3,
+        "text": "Simplify: $\\frac{12}{18}$",
+        "choices": ["$\\frac{2}{3}$", "$\\frac{3}{2}$", "$\\frac{4}{6}$", "$\\frac{6}{4}$"],
+        "answers": {
+          "correct": {"index": 0, "comment": "Correct! Both 12 and 18 are divisible by 6, simplifying to $\\frac{2}{3}$"},
+          "wrong": [
+            {"index": 1, "comment": "Incorrect. You inverted the fraction."},
+            {"index": 2, "comment": "Incorrect. While this is equivalent, it can be further simplified."},
+            {"index": 3, "comment": "Incorrect.  You inverted the fraction and didn't fully simplify."}
+          ]
+        }
+      },
+      {
+        "id": 4,
+        "text": "What is the value of $3^2$?",
+        "choices": ["9", "6", "5", "1"],
+        "answers": {
+          "correct": {"index": 0, "comment": "Correct! $3^2 = 3 \\times 3 = 9$"},
+          "wrong": [
+            {"index": 1, "comment": "Incorrect. Exponents represent repeated multiplication, not addition."},
+            {"index": 2, "comment": "Incorrect.  $3^2$ means $3 \\times 3$"},
+            {"index": 3, "comment": "Incorrect. Any number raised to the power of 0 is 1, but $3^2$ is different."}
+          ]
+        }
+      },
+      {
+        "id": 5,
+        "text": "If $y = 2x + 1$, what is the value of $y$ when $x = 4$?",
+        "choices": ["9", "7", "8", "5"],
+        "answers": {
+          "correct": {"index": 0, "comment": "Correct! Substitute $x=4$ into the equation: $y = 2(4) + 1 = 8 + 1 = 9$"},
+          "wrong": [
+            {"index": 1, "comment": "Incorrect. Check your multiplication and addition when substituting x=4."},
+            {"index": 2, "comment": "Incorrect. You only multiplied. Remember to add 1 afterwards."},
+            {"index": 3, "comment": "Incorrect. Check the entire calculation after substituting x=4."}
+          ]
+        }
+      }
+    ]
+  }
