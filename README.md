@@ -56,9 +56,22 @@ The JSON file should follow this structure:
 
 ![Final Report](final_report.png)
 
-## Generating JSON Quizzes with ChatGPT
+## Using the Custom Chatbot
 
-You can automatically generate JSON quiz files using a Custom ChatGPT Bot. This bot can help you create multiple-choice quizzes in the required JSON format. Access the bot here: [ChatGPT Custom GPT](https://chatgpt.com/g/g-5ZAIVfT89-json-multiple-choice-quiz)
+You can generate JSON quiz files using a Custom ChatGPT Bot. This bot helps create multiple-choice quizzes in the required JSON format.
+
+### How to Use
+
+1. **Access the Bot**: Visit the [ChatGPT Custom GPT](https://chatgpt.com/g/g-5ZAIVfT89-json-multiple-choice-quiz).
+2. **Generate a Quiz**: Enter your request, such as "Generate an 8th grade Algebra 1 quiz, make sure to shuffle the correct answer index."
+
+   ![Custom Bot Request](CustomBot.png)
+
+3. **Receive the JSON**: The bot will provide a JSON formatted quiz.
+
+   ![Custom Bot Reply](CustomBotReply.png)
+
+This project is licensed under the Apache License, Version 2.0 - see the [LICENSE](LICENSE) file for details.
 
 This project is licensed under the Apache License, Version 2.0 - see the [LICENSE](LICENSE) file for details.
 
