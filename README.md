@@ -73,8 +73,6 @@ You can generate JSON quiz files using a Custom ChatGPT Bot. This bot helps crea
 
 This project is licensed under the Apache License, Version 2.0 - see the [LICENSE](LICENSE) file for details.
 
-This project is licensed under the Apache License, Version 2.0 - see the [LICENSE](LICENSE) file for details.
-
 ## Acknowledgments
 
 - Built with [Vue.js](https://vuejs.org/)
