@@ -226,6 +226,25 @@
             margin: 15px 0;
         }
 
+        .incorrect-option {
+            color: #f44336;
+            margin: 5px 0;
+        }
+
+        .correct-option {
+            color: #2196F3;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+
+        .answer-comment {
+            background-color: #e3f2fd;
+            border: 1px solid #bbdefb;
+            border-radius: 4px;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
         #chartContainer {
             margin-top: 30px;
             width: 100%;
@@ -320,8 +339,9 @@
                         <h3>Incorrect Answers Review:</h3>
                         <div v-for="(item, index) in incorrectAnswers" :key="index">
                             <h4 v-mathjax>Question: <span v-html="item.question"></span></h4>
-                            <p v-mathjax>Your Answer: <span v-html="item.selected"></span></p>
-                            <p v-mathjax>Correct Answer Explanation: <span v-html="getCorrectAnswerComment(item.question)"></span></p>
+                            <p v-mathjax class="incorrect-option">Your Answer: <span v-html="item.selected"></span></p>
+                            <p v-mathjax class="correct-option">Correct Answer: <span v-html="getCorrectAnswer(item.question)"></span></p>
+                            <div class="answer-comment" v-mathjax v-html="getCorrectAnswerComment(item.question)"></div>
                             <hr>
                         </div>
                     </div>
@@ -423,6 +443,10 @@
             getCorrectAnswerComment(questionText) {
                 const question = this.questions.find(q => q.text === questionText)
                 return question ? question.answers.correct.comment : ''
+            },
+            getCorrectAnswer(questionText) {
+                const question = this.questions.find(q => q.text === questionText)
+                return question ? question.choices[question.answers.correct.index] : ''
             },
 
             handleAnswer(choiceIndex) {
