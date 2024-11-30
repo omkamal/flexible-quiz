@@ -322,6 +322,7 @@
 
                     <div v-if="showFeedback" :class="['feedback', isCorrect ? 'correct' : 'wrong']">
                         <span v-mathjax v-html="feedbackMessage"></span>
+                        <div class="answer-comment" v-mathjax v-html="currentFeedbackComment"></div>
                     </div>
                 </div>
 
@@ -377,7 +378,8 @@
                 isCorrect: false,
                 timer: null,
                 questionStartTime: null,
-                answerTimes: []
+                answerTimes: [],
+                currentFeedbackComment: ''
             }
         },
         computed: {
@@ -480,6 +482,9 @@
 
                     this.showFeedback = true;
                     this.feedbackMessage = isCorrect ? "Correct!" : "Wrong.";
+                    this.currentFeedbackComment = isCorrect ? 
+                        currentQuestion.answers.correct.comment : 
+                        currentQuestion.answers.wrong.find(w => w.index === choiceIndex)?.comment || "Try again!";
 
                     setTimeout(() => {
                         this.showFeedback = false;
@@ -555,6 +560,7 @@
                 this.wrongAnswers = 0
                 this.incorrectAnswers = []
                 this.showFeedback = false
+                this.currentFeedbackComment = ''
                 this.answerTimes = []
                 this.startQuiz()
             },
