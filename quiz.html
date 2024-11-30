@@ -331,7 +331,7 @@
 
                     <div class="stats">
                         <p>Overall Score: {{ (correctAnswers / questions.length * 100).toFixed(2) }}%</p>
-                        <p>Total Time: {{ totalTime }} seconds</p>
+                        <p>Total Time: {{ totalTime.toFixed(2) }} seconds</p>
                         <p>Average Time per Question: {{ (totalTime / questions.length).toFixed(2) }} seconds</p>
                     </div>
 
