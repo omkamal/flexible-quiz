@@ -245,6 +245,22 @@
             margin: 10px 0;
         }
 
+        .next-button {
+            background-color: #2196F3;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            width: auto;
+            display: inline-block;
+        }
+
+        .next-button:hover {
+            background-color: #1976D2;
+        }
+
         #chartContainer {
             margin-top: 30px;
             width: 100%;
@@ -323,6 +339,7 @@
                     <div v-if="showFeedback" :class="['feedback', isCorrect ? 'correct' : 'wrong']">
                         <span v-mathjax v-html="feedbackMessage"></span>
                         <div class="answer-comment" v-mathjax v-html="currentFeedbackComment"></div>
+                        <button class="next-button" @click="nextQuestion">Next Question</button>
                     </div>
                 </div>
 
@@ -486,18 +503,7 @@
                         currentQuestion.answers.correct.comment : 
                         currentQuestion.answers.wrong.find(w => w.index === choiceIndex)?.comment || "Try again!";
 
-                    setTimeout(() => {
-                        this.showFeedback = false;
-
-                        if (this.currentQuestionIndex < this.questions.length - 1) {
-                            this.currentQuestionIndex++;
-                            this.questionTime = 0; // Reset questionTime *before* starting the timer for the next question
-                            this.startTimer(); // Start timer for the next question
-                        } else {
-                            this.quizCompleted = true;
-                            this.renderChart();
-                        }
-                    }, 2000);
+                    this.showFeedback = true;
                 }
             },
 
@@ -564,6 +570,18 @@
                 this.answerTimes = []
                 this.startQuiz()
             },
+            nextQuestion() {
+                this.showFeedback = false;
+                if (this.currentQuestionIndex < this.questions.length - 1) {
+                    this.currentQuestionIndex++;
+                    this.questionTime = 0;
+                    this.startTimer();
+                } else {
+                    this.quizCompleted = true;
+                    this.renderChart();
+                }
+            },
+
             reloadQuiz() {
                 this.quizLoaded = false
                 this.quizStarted = false
