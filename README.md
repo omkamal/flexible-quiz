@@ -6,12 +6,29 @@ Flexible Quiz is a Vue.js application designed to generate interactive HTML quiz
 
 ![Sample Quiz](sample_quiz.png)
 
+## Quiz Modes
+
+The application offers two distinct quiz modes:
+
+### Standard Quiz (quiz.html)
+- Automatic progression after answering each question
+- Brief feedback showing correct/incorrect status
+- 2-second delay before moving to next question
+- Ideal for quick assessments and timed tests
+
+### Practice Quiz (practice.html)
+- Manual progression with "Next Question" button
+- Detailed feedback with explanations for each answer
+- Students control their own pace
+- Better for learning and understanding concepts
+
 ## Features
 
 - **Dynamic Quiz Generation**: Load quizzes dynamically from JSON files.
 - **Interactive UI**: Provides an engaging user interface with real-time feedback on answers.
 - **Performance Tracking**: Displays scores and time spent on each question.
 - **Review Incorrect Answers**: Offers explanations for incorrect answers to enhance learning.
+- **Flexible Learning Modes**: Choose between timed quizzes or self-paced practice sessions.
 
 ## Getting Started
 
