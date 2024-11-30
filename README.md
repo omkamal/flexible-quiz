@@ -90,6 +90,10 @@ You can generate JSON quiz files using a Custom ChatGPT Bot. This bot helps crea
 
 This project is licensed under the Apache License, Version 2.0 - see the [LICENSE](LICENSE) file for details.
 
+## Video Demo
+
+Watch a video demonstration of the Flexible Quiz application: [Video Demo](https://youtu.be/Yo3lbirQD2A)
+
 ## Acknowledgments
 
 - Built with [Vue.js](https://vuejs.org/)
